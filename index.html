@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="calculator">
+        <form id="digit_container" class="form" name="calculator">
+            <div>
+                <input id="display" type="text" name="display" max="5" placeholder="0">
+            </div>
+            <div class="first_row">
+                <input type="button" class="button" value="7" name="input">
+                <input type="button" class="button" value="8" name="input">
+                <input type="button" class="button" value="9" name="input">
+                <input type="button" class="button operator" value="/" name="input">
+            </div>
+            <div class="second_row">
+                <input type="button" class="button" value="4" name="input">
+                <input type="button" class="button" value="5" name="input">
+                <input type="button" class="button" value="6" name="input">
+                <input type="button" class="button operator" value="x">
+                
+            </div>
+            <div class="third_row">
+                <input type="button" class="button" value="1" name="input">
+                <input type="button" class="button" value="2" name="input">
+                <input type="button" class="button" value="3" name="input">
+                <input type="button" class="button operator" value="-" name="input">
+            </div>
+            <div class="fourth_row">
+                <input type="button" id="clear_btn" class="button" value="C" name="input">
+                <input type="button" class="button" value="0" name="input">
+                <input type="button" class="button operator" value="=" name="input" onclick="calculator.display.value = eval(calculator.display.value)">
+                <input type="button" class="button operator" value="+" name="input">
+            </div>
+
+            <!-- <input type="button" class="button" value="0" name="input" onclick="calculator.display.value += '8'"> -->
+
+        </form>
+
+    </section>
+
+    <script>
+        const digitContainer = document.getElementById('digit_container');
+        digitContainer.addEventListener('click', function (event) {
+            const digit = event.target.value;
+            console.log(digit);
+            const digitDisplay = document.getElementById('display');
+            console.log(digitDisplay.value);
+            if (digit === 'C') {                
+                digitDisplay.value = '';
+            } else if (digit === 'x'){
+                digitDisplay.value += '*';
+            } else if (digit === '='){
+                eval(digitDisplay.value);
+            } else {
+                digitDisplay.value += digit;
+            }
+        })
+
+    </script>
+</body>
+</html>
+
